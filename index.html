@@ -3,11 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>建设中...包奕晴诗集</title>
+    <title>包奕晴诗集</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        /* 确保页面占满全屏 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        /* iframe占满剩余空间 */
+        #content-frame {
+            width: 100%;
+            height: calc(100% - 70px); /* 减去导航栏高度 */
+            border: none;
+            display: block;
+        }
     </style>
-</head>
+</head> 
 <body>
-<img src="https://s41.ax1x.com/2026/03/18/peeLwrt.png">
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><font color="#000fff"><a href="#" onclick="loadPage('home.html'); return false;">首页</a></font></li>
+                <li><a href="#" onclick="loadPage('poems.html'); return false;" title="看看包奕晴的所有作品">诗集</a></li>
+                <li><a href="#" onclick="loadPage('about.html'); return false;" title="了解包奕晴的最新动态">动态</a></li>
+                <li><a href="#" onclick="loadPage('about.html'); return false;" title="了解包奕晴">关于</a></li>
+            </ul>
+            <div class="nav-logo">
+                <a href="#" onclick="loadPage('home.html'); return false;"><img src="img/Logo.webp" alt="Logo"></a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 嵌入页面内容 -->
+    <iframe id="content-frame" src="home.html"></iframe>
+    
+    <script>
+        // 加载指定页面到iframe
+        function loadPage(pageUrl) {
+            document.getElementById('content-frame').src = pageUrl;
+        }
+    </script>
 </body>
 </html>
