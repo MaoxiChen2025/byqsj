@@ -11,7 +11,46 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <style>
+    <style>    /* 移动端提示弹窗样式 */
+    .mobile-tip {
+      display: none; /* 默认隐藏 */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      z-index: 9999; /* 置顶显示 */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .mobile-tip h3 {
+      font-size: 20px;
+      color: #333;
+      margin: 0 0 15px;
+    }
+    .mobile-tip p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+    .mobile-tip .icon {
+      font-size: 48px;
+      color: #409eff;
+      margin-bottom: 20px;
+    }
+    /* 电脑端隐藏提示，移动端显示 */
+    @media (max-width: 768px) {
+      .mobile-tip {
+        display: flex;
+      }
+    }
+    
         /* 确保页面占满全屏 */
         html, body {
             margin: 0;
@@ -45,9 +84,32 @@
             </div>
         </div>
     </nav>
+      <div class="mobile-tip">
+    <div class="icon">📱</div>
+    <h3>温馨提示</h3>
+    <p>本网站暂未适配移动设备，为获得更好的浏览体验，建议您使用电脑访问（电脑端建议使用Chrome、Edge、360等浏览器，不建议使用Firefox浏览器）。</p>
+  </div>
     <!-- 嵌入页面内容 -->
     <iframe id="content-frame" src="home.html"></iframe>
+  <script>
+    // 额外的JS检测（增强兼容性）
+    function isMobile() {
+      // 检测设备类型：手机/平板
+      const userAgent = navigator.userAgent.toLowerCase();
+      const mobileDevices = ['iphone', 'android', 'ipad', 'ipod', 'mobile', 'tablet'];
+      return mobileDevices.some(device => userAgent.includes(device));
+    }
 
+    // 页面加载后检测
+    window.onload = function() {
+      const tipBox = document.querySelector('.mobile-tip');
+      if (isMobile()) {
+        tipBox.style.display = 'flex';
+      } else {
+        tipBox.style.display = 'none';
+      }
+    }
+  </script>
     <script>
         // 加载指定页面到iframe
         function loadPage(pageUrl) {

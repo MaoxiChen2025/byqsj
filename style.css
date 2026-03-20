@@ -89,3 +89,10 @@ nav {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+.information{
+    text-align: center;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal !important;
+  color: #062a5c;
+}
