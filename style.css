@@ -96,3 +96,24 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal !important;
   color: #062a5c;
 }
+/* 父容器样式 */
+.home-tab {
+  font-size: 80px;
+  color: #009688; /* 青绿色文字，匹配原图 */
+  position: relative; /* 关键：为伪元素提供定位基准 */
+  padding: 20px 0; /* 给下划线留出空间 */
+  cursor: pointer;
+}
+
+/* 伪元素实现下划线 */
+.home-tab::after {
+  content: ''; /* 必须有content才能显示 */
+  position: absolute;
+  bottom: 0; /* 贴在文字底部 */
+  left: 50%;
+  transform: translateX(-50%); /* 水平居中 */
+  width: 80%; /* 下划线宽度，可自由调整 */
+  height: 16px; /* 下划线高度，模拟原图粗线条 */
+  background-color: #00bcd4; /* 亮青色，匹配原图 */
+  border-radius: 8px; /* 圆角，还原原图效果 */
+}
